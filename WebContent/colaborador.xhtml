@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<style type="text/css">
+@import
+url(#{facesContext.externalContext.request.contextPath}/css/style.css)
+</style>
+	<title>Colaborador</title>
+</h:head>
+<h:body>
+	<!-- 	<h:outputStylesheet library="css" name="./css/style.css"  /> -->
+	<h1>Colaborador</h1>
+	<h:form>
+		<h:inputHidden value="#{beanColaborador.colaborador.id}" id="id" />
+		<h:panelGrid columns="2">
+			<h:outputLabel for="nome">Nome:</h:outputLabel>
+			<h:inputText value="#{beanColaborador.colaborador.nome}" id="nome"></h:inputText>
+
+			<h:outputLabel for="email">E-mail:</h:outputLabel>
+			<h:inputText value="#{beanColaborador.colaborador.email}" id="email"></h:inputText>
+			
+			<h:outputLabel for="funcao">Função:</h:outputLabel>
+			<h:inputText value="#{beanColaborador.colaborador.funcao}" id="funcao"></h:inputText>
+
+			<h:form>
+			<h:commandButton action="#{beanColaborador.salvar}"
+				value="Salvar"></h:commandButton>
+			</h:form>
+
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

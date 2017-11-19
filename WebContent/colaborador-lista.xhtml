@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<style type="text/css">
+@import
+url(#{facesContext.externalContext.request.contextPath}/css/style.css)
+</style>
+	<title>Colaboradores</title>
+</h:head>
+<h:body>
+	<!-- 	<h:outputStylesheet library="css" name="./css/style.css"  /> -->
+	<h1>Colaboradores</h1>
+	<h:form>
+		<h:commandButton action="#{beanColaborador.novoColaborador}" value="Novo" />
+		<h:dataTable var="c" value="#{beanColaborador.colaboradores}"
+			rowClasses="odd,even"
+			columnClasses="hidden,name,email,column-button, column-button"
+			cellspacing="0" width="100%">
+			<h:column>
+				<f:facet name="header"></f:facet>
+    			#{c.id}
+    		</h:column>
+			<h:column width="70%">
+				<f:facet name="header">Nome</f:facet>
+    			#{c.nome}
+    		</h:column>
+			<h:column width="30%">
+				<f:facet name="header">E-mail</f:facet>
+    			#{c.email}
+    		</h:column>
+			<h:column>
+				<f:facet name="header"></f:facet>
+					<h:commandButton action="#{beanColaborador.buscar}" value="Alterar" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"></f:facet>
+					<h:commandButton action="#{beanColaborador.remover}" value="Excluir" />
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>

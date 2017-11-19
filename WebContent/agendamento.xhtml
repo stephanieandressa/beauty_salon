@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style type="text/css">
+@import
+url(#{facesContext.externalContext.request.contextPath}/css/style.css)
+</style>
+<script type="text/javascript">
+PrimeFaces.locales['pt'] = {
+            closeText: 'Fechar',
+            prevText: 'Anterior',
+            nextText: 'Próximo',
+            currentText: 'Começo',
+            monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+            monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Des'],
+            dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+            dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+            dayNamesMin: ['D','S','T','Q','Q','S','S'],
+            weekHeader: 'Semana',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            timeOnlyTitle: 'Só Horas',
+            timeText: 'Tempo',
+            hourText: 'Hora',
+            minuteText: 'Minuto',
+            secondText: 'Segundo',
+            currentText: 'Data Atual',
+            ampm: false,
+            month: 'Mês',
+            week: 'Semana',
+            day: 'Dia',
+            allDayText : 'Todo Dia'
+        };
+</script>
+	<title>Agendamento</title>
+</h:head>
+<h:body>
+	<!-- 	<h:outputStylesheet library="css" name="./css/style.css"  /> -->
+	<h1>Agendamento</h1>
+	<h:form>
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel for="colaborador">Colaborador:</h:outputLabel>
+			<h:selectOneMenu value="#{beanAgendamento.colaborador}" > 
+			   <f:selectItems value = "#{beanAgendamento.colaboradores}" var="e" itemValue="#{e.id}" itemLabel="#{e.nome} - #{e.funcao}" /> 
+			</h:selectOneMenu>
+			
+			<p:outputLabel for="data" value="Data" />
+        	<p:calendar id="data" value="#{beanAgendamento.data}" mode="inline" 
+        				locale="pt" >
+        		<p:ajax listener="#{beanAgendamento.buscaAgendaColaborador}" />
+        	</p:calendar>
+			
+			<h:form>
+			<h:commandButton action="#{beanAgendamento.salvar}"
+				value="Salvar"></h:commandButton>
+			</h:form>
+
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

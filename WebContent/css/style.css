@@ -1,0 +1,29 @@
+h1 {
+	font-size: 22px;
+	color: #2d8659;	
+}
+
+.odd {
+	background-color: #ffffff;
+}
+
+.even {
+	background-color: #ecf9f2;
+}
+
+.column-button {
+	width: 10%;
+	text-align: center;
+}
+
+.email {
+	width: 25%;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.name {
+	width: 55%;
+}
