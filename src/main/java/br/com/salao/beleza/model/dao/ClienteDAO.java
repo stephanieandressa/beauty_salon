@@ -14,15 +14,18 @@ public class ClienteDAO {
 	private EntityManager entityManager;
 	
 	public ClienteDAO() {
+		//Cria o entity manager
 		this.entityManager = new PersistenceManager().getEntityManager();
 	}
 	
 	public void salvar(Cliente cliente) {
 		EntityTransaction transaction = entityManager.getTransaction();
+		// Inicia uma nova transação com o banco de dados.
 		transaction.begin();
+		//Insere o objeto cliente como registro no banco de dados;
 		entityManager.persist(cliente);
-		transaction.commit();
-		entityManager.close();
+		transaction.commit(); // commita a transação com o banco de dados.
+		entityManager.close(); //Fecha o entity manager
 	}
 	
 	public void deletar(Cliente cliente) {
@@ -36,6 +39,7 @@ public class ClienteDAO {
 
 	public List<Cliente> listar() {
 		this.entityManager = new PersistenceManager().getEntityManager();
+		// não cria transação com banco de dados, pois select não precisa de transação.
 		Query query = this.entityManager.createQuery("from Cliente");
 		return query.getResultList();
 	}

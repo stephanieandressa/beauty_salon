@@ -10,7 +10,10 @@
 		<hibernate.version>5.2.6.Final</hibernate.version>
 		<jsf.version>2.2.13</jsf.version>
 	</properties>
-
+	
+<!-- 	Arquivo para configuração das dependencias do projeto -->
+<!-- Quando rodado, o maven busca os jars no repositório central e traz para um repositório local. -->
+<!-- Automaticamente, também aponta no .classpath do projeto onde estão as dependências. -->
 	<dependencies>
 		<dependency>
 			<groupId>com.sun.faces</groupId>

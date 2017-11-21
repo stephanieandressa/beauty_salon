@@ -34,15 +34,19 @@ public class BeanCliente {
 	}
 
 	public String salvar() {
-		ClienteDAO clienteDao = new ClienteDAO();
+		// Se cliente for null, retorna a tela de cadastro do cliente.
 		if (cliente == null) {
 			return "cliente.xhtml";
 		}
+		ClienteDAO clienteDao = new ClienteDAO();
+		//Se o id do cliente é diferente de null, atualiza
 		if (cliente.getId() != null) {
 			clienteDao.atualizar(cliente);
 			this.listar();
+			// retorna tela de lista de clientes
 			return "cliente-list.xhtml";
 		}
+		// Se id é igual a null, é porque o cliente é novo. Salva novo cliente.
 		clienteDao.salvar(cliente);
 		this.listar();
 		return "cliente-list.xhtml";

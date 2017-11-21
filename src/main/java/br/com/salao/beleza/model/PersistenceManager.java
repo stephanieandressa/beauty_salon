@@ -9,6 +9,7 @@ public class PersistenceManager {
 	private EntityManagerFactory factory;
 	
 	public PersistenceManager() {
+		//Busca a unidade de persistencia configurada no arquivo persistence.xml
 		factory = Persistence.createEntityManagerFactory("salao_beleza");
 	}
 	
